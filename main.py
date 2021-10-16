@@ -1,9 +1,14 @@
-import uninformed
 import gridops
 import test
-
+import uninformed
+import informed
 grid = gridops.readGrid('grid.txt')
-startgoal = test.genStartGoal(grid)
-uninformed.uninformedsearch(startgoal[0], startgoal[1], grid)
+start, goal = gridops.genStartGoal(grid)
+uninformed.uninformedsearch(start, goal, grid)
+path = [x.location for x in uninformed.bfspath]
+
+informed.A_star(start,goal,grid)
+informed.greedy(start, goal, grid)
+
 
 
