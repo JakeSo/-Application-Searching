@@ -1,10 +1,11 @@
-import math
 import heapq
+import math
 
 import gridops
 
 sloc = []
 gloc = []
+
 
 class Node():
     """docstring forNode."""
@@ -43,7 +44,7 @@ def getNeighbors(location, grid):
     return list
 
 
-def expandNode(c, grid, closedList, openList, greedy = False):
+def expandNode(c, grid, closedList, openList, greedy=False):
     x = getNeighbors(c.location, grid)
     for i in x:
         b = False
@@ -61,6 +62,7 @@ def expandNode(c, grid, closedList, openList, greedy = False):
                 neighbor = Node(i, grid[i[0]][i[1]], c)
             openList.push(neighbor)
     return openList
+
 
 def heuristic(location):
     return math.sqrt((location[0] - gloc[0]) ** 2 + (location[1] - gloc[1]) ** 2)
@@ -142,7 +144,7 @@ class pqueue:
 
 
 def A_star(initial, goal, grid):
-    print("A*:")
+    print("######## A* ########")
     olist = pqueue()
     clist = []
     path = []
@@ -170,14 +172,15 @@ def A_star(initial, goal, grid):
             f = open('path.txt', 'r')
             print(f.read())
             print("Path cost = " + str(cost))
-            print("Expanded Nodes = " + str(expanded) + "\n")
+            print("Expanded Nodes = " + str(expanded))
             break
         else:
             olist = expandNode(current, grid, clist, olist)
             expanded += 1
 
+
 def greedy(initial, goal, grid):
-    print("Greedy:")
+    print("###### Greedy ######")
     olist = pqueue()
     clist = []
     path = []
@@ -212,7 +215,6 @@ def greedy(initial, goal, grid):
         else:
             olist = expandNode(current, grid, clist, olist, True)
             expanded += 1
-
 
 # node=Node([3,2], None)
 # openList=expandNode(node, grid, closedList, openList)

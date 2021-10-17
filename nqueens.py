@@ -1,5 +1,5 @@
-
 import random
+
 
 class Board():
 
@@ -8,19 +8,19 @@ class Board():
         self.numRows = numRowsCols
         self.numCols = numRowsCols
 
-		# negative value for initial h...easy to check if it's been set or not
+        # negative value for initial h...easy to check if it's been set or not
         self.h = -1
 
     # Print board
     def printBoard(self):
         for row in self.cells:
-            print (row)
+            print(row)
 
     # Randomize the board
     def rand(self):
         self.cells = [[0] * self.numRows for i in range(self.numRows)]
         for row in self.cells:
-            i = random.randint(0, self.numCols-1)
+            i = random.randint(0, self.numCols - 1)
             row[i] = 1
 
     # Swap two locations on the board
@@ -30,19 +30,15 @@ class Board():
         self.cells[b[0]][b[1]] = temp
 
 
-
-
-
 # Cost function for a board
 def numAttackingQueens(board):
-
     # Collect locations of all queens
     locs = []
-    for r in range( len(board.cells) ):
-        for c in range( len(board.cells[r]) ):
+    for r in range(len(board.cells)):
+        for c in range(len(board.cells[r])):
             if board.cells[r][c] == 1:
                 locs.append([r, c])
-    #print 'Queen locations: %s' % locs
+    # print 'Queen locations: %s' % locs
 
     result = 0
 
@@ -51,12 +47,12 @@ def numAttackingQueens(board):
 
         # Get the list of the other queen locations
         others = [x for x in locs if x != q]
-        #print 'q: %s others: %s' % (q, others)
-    
+        # print 'q: %s others: %s' % (q, others)
+
         count = 0
         # For each other queen
         for o in others:
-            #print 'o: %s' % o
+            # print 'o: %s' % o
             diff = [o[0] - q[0], o[1] - q[1]]
 
             # Check if queens are attacking
@@ -69,8 +65,6 @@ def numAttackingQueens(board):
     return result
 
 
-
-
 # Move any queen to another square in the same column
 # successors all the same                                                                                    
 def getSuccessorStates(board):
@@ -80,7 +74,7 @@ def getSuccessorStates(board):
         # Get the column the queen is on in this row
         # [0] because list comprehension returns a list, even if only one element
         # This line will crash if the board has not been initialized with rand() or some other method
-        i_queen = [i for i,x in enumerate(row) if x == 1][0]
+        i_queen = [i for i, x in enumerate(row) if x == 1][0]
 
         # For each column in the row
         for i_col in range(board.numCols):
@@ -93,7 +87,7 @@ def getSuccessorStates(board):
 
                 # Now swap queen to i_col from i_queen
                 bTemp.swapLocs([i_row, i_col], [i_row, i_queen])
-                #bTemp.printBoard()
+                # bTemp.printBoard()
                 result.append(bTemp)
 
     return result

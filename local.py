@@ -1,17 +1,16 @@
-import nqueens
 import random
+
+import nqueens
 
 
 def simulatedAnnealing(initBoard, decayRate, T_Threshold):
     current = initBoard
     T = 1000
-
-    while True:
-        h = nqueens.numAttackingQueens(current)
-
-        if T <= T_Threshold or h == 0:
-            return current
-
+    print("Initial board:")
+    initBoard.printBoard()
+    h = nqueens.numAttackingQueens(current)
+    print("h-value: " + str(h))
+    while (T >= T_Threshold and h > 0):
         T = f(T, decayRate)
 
         sucStates = nqueens.getSuccessorStates(current)
@@ -21,19 +20,22 @@ def simulatedAnnealing(initBoard, decayRate, T_Threshold):
         if (nqueens.numAttackingQueens(sucStates[b]) < h):
             current = sucStates[b]
 
+        h = nqueens.numAttackingQueens(current)
+    print("Final board:")
+    current.printBoard()
+    print("h-value: " + str(h))
+
 
 def f(T, decayRate):
     return T * decayRate
 
 
-# Test stuff
-
-bo = nqueens.Board(5)
-bo.rand()
-bo.printBoard()
-print(nqueens.numAttackingQueens(bo))
-
-bo = simulatedAnnealing(bo, 0.5, 0.00000001)
-
-bo.printBoard()
-print(nqueens.numAttackingQueens(bo))
+def runTests():
+    print('#' * 20)
+    print("Simulated Annealing:")
+    print("Decay rate: 0.5; Threshold: 1e-08")
+    print('#' * 20)
+    b = nqueens.Board(4)
+    for x in range(10):
+        b.rand()
+        simulatedAnnealing(b, 0.5, 1 * 10 ^ -8)

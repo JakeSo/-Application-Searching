@@ -1,9 +1,9 @@
 import copy
 import matplotlib
-from matplotlib import colors
 import matplotlib.pyplot as plt
 import numpy as np
 import random
+from matplotlib import colors
 
 
 def genStartGoal(grid):
@@ -130,6 +130,8 @@ def visualizeGrid(grid, path, block, max_cost):
     ax.set_yticklabels(np.arange(0, len(grid[0]) + 1, tickInc))
 
     plt.show()
+
+
 # The grid values must be separated by spaces, e.g.
 # 1 1 1 1 1
 # 1 0 0 0 1
@@ -137,14 +139,14 @@ def visualizeGrid(grid, path, block, max_cost):
 # 1 1 1 1 1
 # Returns a 2D list of integers
 def readGrid(filename):
-    #print('In readGrid')
+    # print('In readGrid')
     grid = []
     with open(filename) as f:
         for l in f.readlines():
             grid.append([int(x) for x in l.split()])
 
     f.close()
-    #print 'Exiting readGrid'
+    # print 'Exiting readGrid'
     return grid
 
 
@@ -154,7 +156,7 @@ def readGrid(filename):
 # 1 0 0 0 1
 # 1 1 1 1 1
 def outputGrid(grid, start, goal, nodepath):
-    #print('In outputGrid')
+    # print('In outputGrid')
     filenameStr = 'path.txt'
 
     path = [x.location for x in nodepath]
@@ -187,4 +189,4 @@ def outputGrid(grid, start, goal, nodepath):
 
     # Close file
     f.close()
-    #print('Exiting outputGrid')
+    # print('Exiting outputGrid')
