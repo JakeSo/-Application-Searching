@@ -89,7 +89,6 @@ def uninformedsearch(start, goal, grid):
             break
 
         olist = expandNode(current, grid, clist, olist)
-        olist.sort()
         expanded += 1
 
     print("Depth-First Search: ")
@@ -118,7 +117,6 @@ def uninformedsearch(start, goal, grid):
             break
 
         olist = expandNode(current, grid, clist, olist)
-        olist.sort()
         expanded += 1
 
 
