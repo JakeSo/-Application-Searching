@@ -153,7 +153,7 @@ def A_star(initial, goal, grid):
 
     expanded = 0
 
-    start = Node(initial, grid[initial[0]][initial[1]], None)
+    start = Node(initial, 0, None)
 
     olist.push(start)
 
@@ -212,21 +212,3 @@ def greedy(initial, goal, grid):
         else:
             olist = expandNode(current, grid, clist, olist, True)
             expanded += 1
-
-
-# node=Node([3,2], None)
-# openList=expandNode(node, grid, closedList, openList)
-# for i in openList:
-#  print(i.value, end = " ")
-
-# print('\n')
-# node=Node([9,9], None)
-# openList=expandNode(node, grid, closedList, openList)
-# for i in openList:
-#  print(i.value, end = " ")
-# print('\n')
-
-# node=Node([2,3], None)
-# openList=expandNode(node, grid, closedList, openList)
-# for i in openList:
-#  print(i.value, end = " ")

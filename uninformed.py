@@ -68,7 +68,7 @@ def uninformedsearch(start, goal, grid):
     global bfspath
     expanded = 0
 
-    start = Node(start, grid[start[0]][start[1]], None)
+    start = Node(start, 0, None)
 
     olist.append(start)
 
