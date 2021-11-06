@@ -3,12 +3,13 @@
 This is a project for which we implemented classical and local search algorithms.
 
 Classical: \
-  Uninformed: \
-    -Breadth-first and Depth-first search \
-  Informed: \
-    -A-star search \
-    -Greedy BFS search
+  &ensp; Uninformed: \
+  &emsp; -Breadth-first search \
+  &emsp; -Depth-first search \
+  &ensp; Informed: \
+  &emsp; -A-star search \
+  &emsp; -Greedy BFS search
     
-  Local:  \
-    -Simulated Annealing
+  &ensp; Local:  \
+  &emsp; -Simulated Annealing
     
